@@ -51,8 +51,9 @@ export default {
   watch: {
     message(value){
       var that = this;
+      var cityId = this.$store.state.city.id;
       this.cancelRequest();
-      this.axios.get('/api/searchList?cityId=10&kw='+value,{
+      this.axios.get('/api/searchList?cityId='+cityId+'&kw='+value,{
          cancelToken: new this.axios.CancelToken(function executor(c) {
             that.source = c;
         })
@@ -136,6 +137,9 @@ export default {
   display: flex;
   line-height: 22px;
   font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .search_body .search_result .info p:nth-of-type(1) span:nth-of-type(1) {
   font-size: 18px;
