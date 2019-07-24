@@ -67,8 +67,8 @@ export default {
         })
     },
     methods: {
-      handleToDetail(id){
-        this.$router.push('/movie/detail/1/'+id);
+      handleToDetail(movieid){
+        this.$router.push('/movie/detail/1/'+movieid);
       },
       handleToScroll(pos){
         if( pos.y > 30){

@@ -29,7 +29,7 @@ export default {
         return{
             comingList : [],
             isLoading : true,
-            prevCityId : -1
+            prevCityId : -1,
         }
     },
     activated(){

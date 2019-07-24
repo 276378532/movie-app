@@ -19,9 +19,7 @@
             </keep-alive>
         </div>
         <movie-tab-bar/>
-        <keep-alive>
-          <router-view name="detail"/>
-        </keep-alive>
+        <router-view name="detail"/>  
     </div>
 </template>
 

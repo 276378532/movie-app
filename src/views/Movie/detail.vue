@@ -4,7 +4,7 @@
             <i class="iconfont icon-right" @touchstart="handleToBack"></i>
         </Header>
         <Loading v-if="isLoading" />
-        <div v-else id="content" class="contentDetail">
+		    <div v-else id="content" class="contentDetail">
             <div class="detail_list">
                 <div class="detail_list_bg"></div>   
                 <div class="detail_list_filter"></div>
@@ -46,37 +46,39 @@ import Header from '@/components/Header';
 
 export default {
   name: "Detail",
-  props:['id'],
+  
   data(){
       return{
           isLoading: true,
           detailMovie: {},
-          replace: null
+          // replace: null
       }
   },
   components : {
       Header
   },
+  props:['movieId'],
   methods: {
     handleToBack(){
-        this.$router.go(-1);
+        this.$router.back();
     }
   },
   mounted(){
-      this.axios.get('/api/detailMovie?movieId='+this.id).then(res=>{
-          var msg = res.data.msg;
-          if(msg === 'ok'){
-              this.detailMovie = res.data.data.detailMovie;
-              this.isLoading = false;
-              this.$nextTick(()=>{
-                  new Swiper(this.$refs.detail_player,{
-                      slidesPerView : 'auto',
-                      freeMode : true,
-                      freeModeSticky : true
-                  })
-              })
-          }
-      })
+    this.axios.get('/api/detailmovie?movieId='+ this.movieId).then((res)=>{
+        var msg = res.data.msg;
+        if( msg === 'ok' ){
+          // console.log(this.movieId)
+            this.isLoading = false;
+            this.detailMovie = res.data.data.detailMovie;
+            this.$nextTick(()=>{
+                new Swiper(this.$refs.detail_player , {
+                    slidesPerView : 'auto',
+                    freeMode : true,
+                    freeModeSticky: true
+                });
+            });
+        }
+    });
   }
 };
 </script>
