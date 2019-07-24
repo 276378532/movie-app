@@ -4,6 +4,7 @@ import moveRouter from './movie'
 import mineRouter from './mine'
 import cinemaRouter from './cinema'
 
+
 Vue.use(Router)
 
 export default new Router({
