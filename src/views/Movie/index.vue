@@ -19,7 +19,9 @@
             </keep-alive>
         </div>
         <movie-tab-bar/>
-        <!-- <MessageBox/> -->
+        <keep-alive>
+          <router-view name="detail"/>
+        </keep-alive>
     </div>
 </template>
 
@@ -34,8 +36,7 @@ export default {
     movieTabBar,
     // MessageBox
   },
-  mounted(){
-
+mounted(){
   setTimeout(() => {
       this.axios.get('/api/getLocation').then(res=>{
       var msg = res.data.msg;
@@ -60,8 +61,6 @@ export default {
       } 
     })
   }, 3000);
-    
-   
   }
 };
 </script>
