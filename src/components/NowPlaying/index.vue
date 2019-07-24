@@ -5,8 +5,8 @@
         <ul>
           <li class="pullDown">{{ pullDownMsg }}</li>
           <li v-for="item in movieList" :key="item.id">
-              <div class="pic_show" @tap="handleToDetail"><img :src="item.img | setWH('128.180')" ></div>
-              <div class="info_list">
+              <div class="pic_show" @tap="handleToDetail(item.id)"><img :src="item.img | setWH('128.180')" ></div>
+              <div class="info_list" @tap="handleToDetail(item.id)">
                   <h2>{{ item.nm}} <img src="@/assets/maxs.png" v-if="item.version"></h2>
                   <p>观众评：<span class="grade">{{ item.sc }}</span></p>
                   <p>主演：{{ item.star }}</p>
@@ -44,7 +44,6 @@ export default {
         //             tap:true,
         //             probeType:1
         //           })
-
         //           scroll.on('scroll',(pos)=>{
         //             if( pos.y > 30){
         //               this.pullDownMsg = "正在更新中"
@@ -68,9 +67,8 @@ export default {
         })
     },
     methods: {
-      handleToDetail(){
-        console.log(11)
-        // alert(11)
+      handleToDetail(id){
+        this.$router.push('/movie/detail/1/'+id);
       },
       handleToScroll(pos){
         if( pos.y > 30){
